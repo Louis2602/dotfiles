@@ -53,5 +53,20 @@ alias mkdir='mkdir -pv'
 alias h='history'
 alias j='jobs -l'
 alias df='df -h'
-alias vi='nvim'
+alias v='nvim'
 alias g='git'
+alias vf='v `fzf`'
+alias f='fzf'
+alias reload='source ~/.bashrc'
+
+bind '"\C-f":"cd_with_fzf\n"'
+bind '"\C-o":"open_with_fzf\n"'
+
+. ~/z.sh
+
+open_with_fzf() {
+    fzf -m --preview="tree -L 1 {}" --preview-window=:hidden | start `xargs -ro -d "\n" 2>&-`
+}
+cd_with_fzf() {
+    cd $(find . -type d -print | fzf --preview="tree -L 1 {}" --preview-window=:hidden)
+}
