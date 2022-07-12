@@ -38,10 +38,10 @@ export LS_COLORS
 export GCC_COLORS='error=31:warning=35:note=36:caret=32:locus=01:quote=01'
 
 alias cls='clear'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias ls='ls --color=auto'
+alias ll='TERM=dumb lsd -alF'
+alias la='TERM=dumb lsd -A'
+alias l='TERM=dumb lsd -CF'
+alias ls='TERM=dumb lsd --color=auto'
 alias cd..='cd ..'
 bind 'set bell-style none'
 
