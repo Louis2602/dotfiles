@@ -57,9 +57,12 @@ alias g='git'
 alias vif='vi `fzf`'
 alias f='fzf'
 alias reload='source ~/.bashrc'
+alias dt='cd ~'
 
 bind '"\C-f":"cd_with_fzf\n"'
 bind '"\C-o":"open_with_fzf\n"'
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
 
 . ~/z.sh
 
@@ -69,3 +72,6 @@ open_with_fzf() {
 cd_with_fzf() {
     cd $(find . -type d -print | fzf --preview="tree -L 1 {}" --preview-window=:hidden)
 }
+
+export STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init bash)"
