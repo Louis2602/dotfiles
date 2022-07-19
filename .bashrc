@@ -42,6 +42,7 @@ alias ll='TERM=dumb lsd -alF'
 alias la='TERM=dumb lsd -A'
 alias ls='TERM=dumb lsd --color=auto'
 alias cd..='cd ..'
+alias dh='cd ~'
 bind 'set bell-style none'
 
 alias grep='grep --color=auto'
@@ -57,10 +58,14 @@ alias g='git'
 alias vif='vi `fzf`'
 alias f='fzf'
 alias reload='source ~/.bashrc'
-alias dt='cd ~'
+alias dt='cd ~/OneDrive\ -\ VNU-HCMUS/Desktop/'
+alias brc='vi ~/.bashrc'
+alias q='exit'
+alias rc='g++ 21127337.cpp -o main.out; ./main.out'
 
 bind '"\C-f":"cd_with_fzf\n"'
 bind '"\C-o":"open_with_fzf\n"'
+
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
