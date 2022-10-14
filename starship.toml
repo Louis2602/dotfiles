@@ -3,46 +3,50 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-# Change command timeout from 500 to 1000 ms
+# Change command timeout from 500 to 2000 ms
 command_timeout = 2000
 
 # Change the default prompt format
-format = """\
-[╭─](blue)\
-$all[╰─](cyan)$character"""
+# format = """\
+# [╭─](blue)\
+# $all[╰─](cyan)$character"""
 
 
 # Shows the username
 [username]
 style_user = "red"
 style_root = "red"
-format = "[$user]($style) "
+format = "[$user]($style)"
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
-format = "on [$hostname](yellow) "
+format = "[@](cyan)[$hostname](yellow) "
 disabled = false
 
 [directory]
 #truncation_length = 3
 #truncation_symbol = "…/"
+truncate_to_repo = true # truncates directory to root folder if in github repo
 home_symbol = " ~"
 read_only_style = "197"
 read_only = "  "
 style = "cyan"
 format = "at [$path]($style)[$read_only]($read_only_style) "
 
+[jobs]
+disabled = true
+
 [git_branch]
 symbol = " "
-format = "via [$symbol$branch]($style) "
+format = "on [$symbol$branch]($style) "
 #truncation_length = 4
 #truncation_symbol = "…/"
 style = "purple"
 
 [git_status]
-format = '[\($all_status$ahead_behind\)]($style) '
+#format = '[\[$all_status$ahead_behind\]]($style) '
 style = "green"
 conflicted = "🏳"
 up_to_date = " "
@@ -56,35 +60,38 @@ staged = '[++\($count\)](green)'
 renamed = "襁 "
 deleted = " "
 
-[terraform]
-format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
-
-[vagrant]
-format = "via [ vagrant $version]($style) "
-
-[docker_context]
-format = "via [ $context](blue) "
-
-[helm]
-format = "via [ $version](purple) "
-
 [python]
 symbol = " "
-python_binary = "python3"
+format = 'via [${symbol}(${version} )(\($virtualenv\) )]($style)'
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
 
-[nodejs]
-format = "via [ $version](green) "
-disabled = true
+[conda]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[java]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
 
 [ruby]
-format = "via [ $version]($style) "
+symbol = " "
 
-[kubernetes]
-format = 'via [ﴱ $context\($namespace\)](purple) '
-disabled = false
-[kubernetes.context_aliases]
-"do-fra1-prod-k8s-clcreative" = " lgcy-1"
-"infra-home-kube-prod-1" = " prod-1"
-"infra-home-kube-prod-2" = " prod-2"
-"infra-cloud-kube-prod-1" = " prod-1"
-"infra-cloud-kube-test-1" = " test-1"
+[rust]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
