@@ -1,5 +1,4 @@
 # ~/.config/starship.toml
-
 # Inserts a blank line between shell prompts
 add_newline = true
 
@@ -7,22 +6,29 @@ add_newline = true
 command_timeout = 2000
 
 # Change the default prompt format
+# [character]
+# success_symbol = "[>](bold green)"
+# error_symbol = "[✗](bold red)"
+
+
 # format = """\
 # [╭─](blue)\
 # $all[╰─](cyan)$character"""
 
+[fill]
+symbol = " "
 
 # Shows the username
 [username]
-style_user = "red"
-style_root = "red"
+style_user = "bright-white"
+style_root = "bright-white"
 format = "[$user]($style)"
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
-format = "[@](cyan)[$hostname](yellow) "
+format = "[@](red)[$hostname](bright-white) "
 disabled = false
 
 [directory]
@@ -33,32 +39,48 @@ home_symbol = " ~"
 read_only_style = "197"
 read_only = "  "
 style = "cyan"
-format = "at [$path]($style)[$read_only]($read_only_style) "
+format = "[➜](green) [$path]($style)[$read_only]($read_only_style) "
 
 [jobs]
-disabled = true
+# disabled = true
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
 
 [git_branch]
-symbol = " "
-format = "on [$symbol$branch]($style) "
+#symbol = " "
+symbol = " "
+format = '[\(](blue)[$symbol](yellow)[$branch](purple)[\)](blue) '
 #truncation_length = 4
 #truncation_symbol = "…/"
 style = "purple"
 
 [git_status]
-#format = '[\[$all_status$ahead_behind\]]($style) '
-style = "green"
-conflicted = "🏳"
-up_to_date = " "
-untracked = " "
+# format = '[\[$all_status$ahead_behind\]]($style) '
+# style = "green"
+# conflicted = "🏳"
+# up_to_date = " "
+# untracked = " "
+# ahead = "⇡${count}"
+# diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+# behind = "⇣${count}"
+# stashed = " "
+# modified = " "
+# staged = '[++\($count\)](green)'
+# renamed = "襁 "
+# deleted = " "
+conflicted = "="
 ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-stashed = " "
-modified = " "
-staged = '[++\($count\)](green)'
-renamed = "襁 "
-deleted = " "
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = "✓"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = '[+\($count\)](green)'
+renamed = "»"
+deleted = "✘"
 
 [python]
 symbol = " "
