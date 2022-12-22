@@ -6,9 +6,9 @@ add_newline = true
 command_timeout = 2000
 
 # Change the default prompt format
-# [character]
-# success_symbol = "[>](bold green)"
-# error_symbol = "[✗](bold red)"
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[✗](bold red)"
 
 
 # format = """\
@@ -19,27 +19,28 @@ command_timeout = 2000
 symbol = " "
 
 # Shows the username
-[username]
-style_user = "bright-white"
-style_root = "bright-white"
-format = "[$user]($style)"
-disabled = false
-show_always = true
-
-[hostname]
-ssh_only = false
-format = "[@](red)[$hostname](bright-white) "
-disabled = false
+# [username]
+# style_user = "bright-white"
+# style_root = "bright-white"
+# format = "[$user]($style)"
+# disabled = false
+# show_always = true
+#
+# [hostname]
+# ssh_only = false
+# format = "[@](red)[$hostname](bright-white) "
+# disabled = false
 
 [directory]
 #truncation_length = 3
 #truncation_symbol = "…/"
 truncate_to_repo = true # truncates directory to root folder if in github repo
+#
 home_symbol = " ~"
 read_only_style = "197"
 read_only = "  "
-style = "cyan"
-format = "[➜](green) [$path]($style)[$read_only]($read_only_style) "
+style = "bold cyan"
+format = "[⚡](#fbff00)[➜ ](#b1e1ae)[$path]($style)[$read_only]($read_only_style) "
 
 [jobs]
 # disabled = true
