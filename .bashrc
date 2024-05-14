@@ -33,6 +33,8 @@ LS_COLORS=$LS_COLORS':*.yml=38;5;178'
 LS_COLORS=$LS_COLORS':*.txt=38;5;253'
 LS_COLORS=$LS_COLORS':*.md=38;5;184'
 
+LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+
 export LS_COLORS
 
 export GCC_COLORS='error=31:warning=35:note=36:caret=32:locus=01:quote=01'
@@ -43,7 +45,6 @@ alias la='TERM=dumb lsd -A'
 alias ls='TERM=dumb lsd --color=auto'
 alias cd..='cd ..'
 alias home='cd ~'
-bind 'set bell-style none'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -55,29 +56,34 @@ alias j='jobs -l'
 alias df='df -h'
 alias vi='nvim'
 alias g='git'
-alias vif='vi `fzf`'
+alias vif='nvim `fzf`'
 alias f='fzf'
 alias reload='source ~/.bashrc'
 alias dt='cd ~/OneDrive\ -\ VNU-HCMUS/Desktop/'
-alias brc='vi ~/.bashrc'
-alias vrc='vi C:/Users/Admins/AppData/Local/nvim/init.vim' 
+alias brc='cd ~ && vi .bashrc'
+alias vrc='cd C:/Users/Admins/AppData/Local/nvim/ && vi init.lua'
 alias q='exit'
 alias rc='g++ *.cpp && ./a.exe'
+alias here='explorer .'
+alias co="checkout"
 
 bind '"\C-f":"cd_with_fzf\n"'
 bind '"\C-o":"open_with_fzf\n"'
 
+bind 'set bell-style none'
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
 . ~/z.sh
 
 open_with_fzf() {
-    fzf -m --preview="tree -L 1 {}" --preview-window=:hidden | start `xargs -ro -d "\n" 2>&-`
+	fzf -m --preview="tree -L 1 {}" --preview-window=:hidden | start $(xargs -ro -d "\n" 2>&-)
 }
 cd_with_fzf() {
-    cd $(find . -type d -print | fzf --preview="tree -L 1 {}" --preview-window=:hidden)
+	cd $(find . -type d -print | fzf --preview="tree -L 1 {}" --preview-window=:hidden)
 }
 
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init bash)"
+
+source "/d/anaconda3/etc/profile.d/conda.sh"
